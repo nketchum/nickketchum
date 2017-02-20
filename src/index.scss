@@ -7,6 +7,19 @@
 @import 'scss/variables/**/*';
 @import 'scss/**/*';
 
+// THe famous clearfix hack
+%clearfix {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+
 ol, ul, li, table {
   box-sizing: border-box;
 }
@@ -42,7 +55,7 @@ header {
 
 #site-top {
   font-size: 0.85em;
-  overflow: hidden;
+  @extend %clearfix;
   padding: 0 0.5em;
   position: relative;
 
@@ -115,7 +128,7 @@ nav {
 }
 
 .row {
-  overflow: hidden;
+  @extend %clearfix;
   padding: 6em 0;
 
   h1, h2, h3, h4, h5, h6 {
@@ -231,6 +244,21 @@ nav {
     margin: 0;
     line-height: 0;
     width: 25%;
+  }
+}
+
+#skill_tags {
+  margin: 2em 4em 4em;
+  text-align: center;
+  li {
+    @include border-radius(20px);
+    background-color: $darkest;
+    color: $lightest;
+    display: inline-block;
+    font-size: 0.85em;
+    line-height: 2em;
+    margin: 0 0.125em;
+    padding: 0.25em 1.5em;
   }
 }
 

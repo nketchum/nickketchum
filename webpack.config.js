@@ -6,6 +6,8 @@ var path = require('path')
 var CleanPlugin = require('clean-webpack-plugin')
 var CopyPlugin = require('copy-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
+// var HtmlWebpackPlugin = require('html-webpack-plugin')
+// var HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin')
 
 var sassIncludes  = '?includePaths[]=' + path.resolve(__dirname, './node_modules/compass-mixins/lib')
     sassIncludes += '&includePaths[]=' + path.resolve(__dirname, './node_modules/singularitygs/stylesheets')
@@ -49,6 +51,10 @@ module.exports = {
       mangle: true,
       compress: { warnings: false }
     }),
+    // new HtmlWebpackPlugin({
+    //   inlineSource: '.(js|css)$'
+    // }),
+    // new HtmlWebpackInlineSourcePlugin(),
     new webpack.ProvidePlugin({
       Sticky: 'sticky-js'
     }),
