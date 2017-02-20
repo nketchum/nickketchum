@@ -1,0 +1,38 @@
+body {
+  color: $lightest;
+  font-family: $font-family-primary;
+  font-size: $font-size-large;
+  font-weight: 300;
+  letter-spacing: 0.03333em;
+  line-height: $font-size-large * 3/2;
+}
+
+strong { font-weight: 700; }
+
+p, ul, ol, li,
+hr, dl, dt, dd,
+fieldset, table, pre,
+blockquote, object, video { margin: 1em 0; }
+
+h1 { font-size: $font-size-base * 8/4; }
+h2 { font-size: $font-size-base * 7/4; }
+h3 { font-size: $font-size-base * 6/4; }
+h4 { font-size: $font-size-base * 5/4; }
+h5 { font-size: $font-size-base * 4/4; }
+h6 { font-size: $font-size-base * 3/4; }
+
+@include headings {
+  font-weight: 300;
+  margin: 1em 0;
+}
+
+@include headings(1,3) {
+  color: $light;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+@include links {
+  color: $white;
+  text-decoration: none;
+}

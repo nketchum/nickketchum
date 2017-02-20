@@ -1,0 +1,25 @@
+{
+  "name": "nickketchum.com",
+  "version": "1.0.0",
+  "author": "Nicholas Ketchum",
+  "private": true,
+  "dependencies": {
+    "breakpoint-sass": "^2.7.1",
+    "clean-webpack-plugin": "^0.1.15",
+    "compass-mixins": "^0.12.10",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "beta",
+    "import-glob-loader": "^1.1.0",
+    "jquery": "^3.1.1",
+    "node-sass": "^4.5.0",
+    "path": "^0.12.7",
+    "sass-loader": "^6.0.0",
+    "singularitygs": "^1.7.1",
+    "sticky-js": "^1.1.9",
+    "style-loader": "^0.13.1",
+    "vanilla-lazyload": "^4.0.4",
+    "webfontloader": "^1.6.27",
+    "webpack": "^2.2.1"
+  }
+}
