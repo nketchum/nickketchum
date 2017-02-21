@@ -5,9 +5,7 @@ var path = require('path')
 
 var CleanPlugin = require('clean-webpack-plugin')
 var CopyPlugin = require('copy-webpack-plugin')
-// var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
-var HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin')
 
 var sassIncludes  = '?includePaths[]=' + path.resolve(__dirname, './node_modules/compass-mixins/lib')
     sassIncludes += '&includePaths[]=' + path.resolve(__dirname, './node_modules/singularitygs/stylesheets')
@@ -23,8 +21,7 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.(sass|scss)$/, loaders: ['style-loader', 'css-loader', ('sass-loader' + sassIncludes), 'import-glob-loader'] },
-      // { test: /webfonts\.css$/, use: ExtractTextPlugin.extract({fallback: "style-loader", use: "css-loader"}) }
+      { test: /\.(sass|scss)$/, loaders: ['style-loader', 'css-loader', ('sass-loader' + sassIncludes), 'import-glob-loader'] }
     ]
   },
   plugins: [
@@ -44,17 +41,14 @@ module.exports = {
     ],
       { ignore: ['.DS_Store', 'Thumbs.db'] }
     ),
-    // new ExtractTextPlugin('webfonts.css'),
     new webpack.optimize.UglifyJsPlugin({
       include: /\.min\.js$/,
       mangle: true,
       compress: { warnings: false }
     }),
     new HtmlWebpackPlugin({
-      template: 'src/index.ejs',
-      // inlineSource: '.(js|css)$'
+      template: 'src/index.ejs'
     }),
-    // new HtmlWebpackInlineSourcePlugin(),
     new webpack.ProvidePlugin({
       Sticky: 'sticky-js'
     }),
