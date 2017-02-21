@@ -99,6 +99,7 @@ header {
 
 nav {
   background-color: $red;
+  z-index: 100;
 
   ul {
     margin: 0;
@@ -243,7 +244,20 @@ nav {
     float: left;
     margin: 0;
     line-height: 0;
+    position: relative;
     width: 25%;
+  }
+  .info {
+    background-color: $red;
+    bottom: 0;
+    box-sizing: border-box;
+    left: 50%;
+    line-height: 1em;
+    margin-left: -37.5%;
+    padding: 1em;
+    position: absolute;
+    text-align: center;
+    width: 75%;
   }
 }
 
