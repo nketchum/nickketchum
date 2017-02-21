@@ -85,7 +85,9 @@ header {
       margin: 6px;
       width: 18px;
     }
+
   }
+
 }
 
 #site-logo {
@@ -98,30 +100,55 @@ header {
 }
 
 nav {
+  @include box-shadow(0px 0px 5px rgba(0, 0, 0, 0.25));
   background-color: $red;
   z-index: 100;
 
   ul {
+    @extend %clearfix;
     margin: 0;
     text-align: center;
 
     li {
-      border-right: 1px solid rgba(255, 255, 255, 0.15);
-      display: inline-block;
       letter-spacing: 0.1em;
       margin: 0;
-      padding: 1.5em 3em;
       text-transform: uppercase;
+
+      @include breakpoint(min-width $view-thin) {
+        border-right: 1px solid rgba(255, 255, 255, 0.15);
+        float: left;
+        width: 20%;
+      }
+
+      a {
+        display: block;
+        padding: 1.5em;
+
+        @include breakpoint(max-width ($view-full - 1)) {
+          padding: 1.5em 0.5em;
+        }
+
+      }
 
       .num {
         font-size: 1.25em;
         font-style: italic;
         font-weight: bold;
+
+        @include breakpoint($view-thin ($view-full - 1)) {
+          display: none;
+        }
+
       }
 
       &:last-child {
         border-right: none;
       }
+
+      &:hover {
+        background-color: $darkest;
+      }
+
     }
 
   }
@@ -161,6 +188,7 @@ nav {
     p {
       color: $gray;
     }
+
   }
 
   &.light {
@@ -173,6 +201,7 @@ nav {
     p {
       color: $darker;
     }
+
   }
 
   &.red {
@@ -181,6 +210,7 @@ nav {
     h2, p {
       color: $white;
     }
+
   }
 
 }
@@ -207,6 +237,7 @@ nav {
       &:nth-child(2n+2) {
           border-right: none;
       }
+
     }
 
     @include breakpoint(min-width $view-thin) {
@@ -220,6 +251,7 @@ nav {
       &:nth-child(4n+4) {
         border-right: none;
       }
+
     }
 
     @include breakpoint(min-width $view-full) {
@@ -227,6 +259,7 @@ nav {
     }
 
   }
+
 }
 
 .row.projects {
@@ -240,6 +273,7 @@ nav {
 
 #project_thumbs {
   margin-top: 4em;
+
   li {
     float: left;
     margin: 0;
@@ -247,6 +281,7 @@ nav {
     position: relative;
     width: 25%;
   }
+
   .info {
     background-color: $red;
     bottom: 0;
@@ -259,11 +294,13 @@ nav {
     text-align: center;
     width: 75%;
   }
+
 }
 
 #skill_tags {
   margin: 2em 4em 4em;
   text-align: center;
+
   li {
     @include border-radius(20px);
     background-color: $darkest;
@@ -274,6 +311,7 @@ nav {
     margin: 0 0.125em;
     padding: 0.25em 1.5em;
   }
+
 }
 
 #mugshot {
