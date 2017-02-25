@@ -15,7 +15,7 @@ module.exports = {
   devtool: 'source-map',
   entry: [
     path.resolve(__dirname, './src/js/index.js'),
-    path.resolve(__dirname, './src/js/misc/webfonts.js'),
+    path.resolve(__dirname, './src/js/webfonts.js'),
     path.resolve(__dirname, './src/scss/index.scss')
   ],
   output: {
@@ -69,6 +69,11 @@ module.exports = {
           content: 'Official portfolio website of Nicholas Ketchum.'
         }
       ]
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      include: /\.min\.js$/,
+      mangle: true,
+      compress: { warnings: false }
     }),
     new webpack.ProvidePlugin({
       Sticky: 'sticky-js'

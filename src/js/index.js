@@ -2,16 +2,28 @@
 
 window.onload = function() {
 
-  const app = document.getElementById('app');
-  var template = require('../front.ejs')
-  app.innerHTML = template();
+  function loadIndex() {
+    const app = document.getElementById('app');
+    var clientele = require('../ejs/clientele.ejs');
+    var projects = require('../ejs/projects.ejs');
+    var personal = require('../ejs/personal.ejs');
+    var skills = require('../ejs/skills.ejs');
+    var modal = require('../ejs/modal.ejs');
+    var index = clientele() + projects() + personal() + skills() + modal();
+    app.innerHTML = index;
+  }
 
-  var sticky = new Sticky('nav');
-  var lazy = new LazyLoad();
-  var modal = new Modal.default();
+  function loadScripts() {
+    var sticky = new Sticky('nav');
+    var lazy = new LazyLoad();
+    var modal = new Modal.default();
+  }
+
+  loadIndex();
+  loadScripts();
 
   // var xhr;
-  // function getRequest(method, url, next) {
+  // function getData(method, url, next) {
   //   xhr = new XMLHttpRequest();
   //   if (!xhr) {
   //     console.log('Error: Cannot create an XMLHttpRequest.');
@@ -21,8 +33,7 @@ window.onload = function() {
   //   xhr.open(method, url, true);
   //   xhr.send();
   // }
-
-  // var getLogos = getRequest('GET', 'http://cms.nickketchum.dev/get/media/logo', function() {
+  // var theData = getData('GET', 'http://cms.nickketchum.dev/get/media/logo', function() {
   //   if (xhr.readyState === XMLHttpRequest.DONE) {
   //     if (xhr.status === 200) {
   //       console.log(xhr.responseText);
