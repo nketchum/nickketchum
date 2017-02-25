@@ -2,6 +2,10 @@
 
 window.onload = function() {
 
+  const app = document.getElementById('app');
+  var template = require('../front.ejs')
+  app.innerHTML = template();
+
   var sticky = new Sticky('nav');
   var lazy = new LazyLoad();
   var modal = new Modal.default();
@@ -27,8 +31,5 @@ window.onload = function() {
   //     }
   //   }
   // });
-
-  // const app = document.getElementById('app');
-  // app.innerHTML = 'The title is: ' + document.title;
 
 };

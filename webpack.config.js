@@ -24,7 +24,8 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.(sass|scss)$/, loaders: ['style-loader', 'css-loader', ('sass-loader' + sassIncludes), 'import-glob-loader'] }
+      { test: /\.(sass|scss)$/, loaders: ['style-loader', 'css-loader', ('sass-loader' + sassIncludes), 'import-glob-loader'] },
+      { test: /\.ejs$/, loader: 'ejs-loader'}
     ]
   },
   plugins: [
