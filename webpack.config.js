@@ -13,10 +13,13 @@ var sassIncludes  = '?includePaths[]=' + path.resolve(__dirname, './node_modules
 
 module.exports = {
   devtool: 'source-map',
-  entry: path.resolve(__dirname, './src/index.js'),
+  entry: [
+    path.resolve(__dirname, './src/js/index.js'),
+    path.resolve(__dirname, './src/js/misc/webfonts.js'),
+    path.resolve(__dirname, './src/scss/index.scss')
+  ],
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: 'http://nickketchum.dev/',
     filename: 'index.min.js'
   },
   module: {
@@ -32,8 +35,9 @@ module.exports = {
     }),
     new CopyPlugin([
       { from: 'src/assets/css',   to: './styles' },
-      { from: 'src/assets/jpg',   to: './images' },
       { from: 'src/assets/ico',   to: './images' },
+      { from: 'src/assets/jpg',   to: './images' },
+      { from: 'src/assets/png',   to: './images' },
       { from: 'src/assets/svg',   to: './images' },
       { from: 'src/assets/ttf',   to: './fonts' },
       { from: 'src/assets/woff',  to: './fonts' },
@@ -41,19 +45,38 @@ module.exports = {
     ],
       { ignore: ['.DS_Store', 'Thumbs.db'] }
     ),
-    new webpack.optimize.UglifyJsPlugin({
-      include: /\.min\.js$/,
-      mangle: true,
-      compress: { warnings: false }
-    }),
     new HtmlWebpackPlugin({
-      template: 'src/index.ejs'
+      appMountId: 'app',
+      inject: false,
+      mobile: true,
+      template: 'src/index.ejs',
+      title: 'Nicholas Ketchum',
+      links: [
+        {
+          href: 'images/favicon.ico',
+          rel: 'shortcut icon'
+        },
+        {
+          href: 'images/apple-touch-icon.png',
+          rel: 'apple-touch-icon',
+          sizes: '180x180'
+        }
+      ],
+      meta: [
+        {
+          name: 'description',
+          content: 'Official portfolio website of Nicholas Ketchum.'
+        }
+      ]
     }),
     new webpack.ProvidePlugin({
       Sticky: 'sticky-js'
     }),
     new webpack.ProvidePlugin({
       LazyLoad: 'vanilla-lazyload'
+    }),
+    new webpack.ProvidePlugin({
+      Modal: 'vanilla-modal'
     })
   ]
 }
