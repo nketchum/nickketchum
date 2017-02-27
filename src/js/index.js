@@ -14,24 +14,58 @@ window.onload = function() {
   }
 
   function onModalOpen(e) {
-    var target = e.target.getAttribute('href').substring(1);
-    var contents;
-    if (target == 'modal_cinders') {
-      contents =
-      '<p><img src="/images/full-coi-01.png"></p>' +
-      '<p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec id elit non mi porta gravida at eget metus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Vestibulum id ligula porta felis euismod semper.</p>' +
-      '<p>Nulla vitae elit libero, a pharetra augue. Maecenas faucibus mollis interdum. Vestibulum id ligula porta felis euismod semper. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec sed odio dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla vitae elit libero, a pharetra augue.<p>' +
-      '<p>Donec ullamcorper nulla non metus auctor fringilla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.<p>' +
-      '<p>Aenean lacinia bibendum nulla sed consectetur. Maecenas faucibus mollis interdum. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.<p>' +
-      '<p>Curabitur blandit tempus porttitor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed posuere consectetur est at lobortis.<p>';
+    var modal;
+    var content;
+    var link = e.target.getAttribute('href').substring(1);
+
+    var content_cinders   = require('../ejs/modal_cinders.ejs');
+    var content_fpd       = require('../ejs/modal_fpd.ejs');
+    var content_coi       = require('../ejs/modal_coi.ejs');
+    var content_rogers    = require('../ejs/modal_rogers.ejs');
+    var content_colorvid  = require('../ejs/modal_colorvid.ejs');
+    var content_telemundo = require('../ejs/modal_telemundo.ejs');
+    var content_nkwebdev  = require('../ejs/modal_nkwebdev.ejs');
+    var content_mitravel  = require('../ejs/modal_mitravel.ejs');
+
+    if (link == 'modal_cinders') {
+      var modal = document.getElementById('modal_cinders');
+      content = content_cinders();
     }
-    var extNode = document.getElementById('modal_cinders');
-    extNode.innerHTML = contents;
+    if (link == 'modal_fpd') {
+      var modal = document.getElementById('modal_fpd');
+      content = content_fpd();
+    }
+    if (link == 'modal_coi') {
+      var modal = document.getElementById('modal_coi');
+      content = content_coi();
+    }
+    if (link == 'modal_rogers') {
+      var modal = document.getElementById('modal_rogers');
+      content = content_rogers();
+    }
+    if (link == 'modal_colorvid') {
+      var modal = document.getElementById('modal_colorvid');
+      content = content_colorvid();
+    }
+    if (link == 'modal_telemundo') {
+      var modal = document.getElementById('modal_telemundo');
+      content = content_telemundo();
+    }
+    if (link == 'modal_nkwebdev') {
+      var modal = document.getElementById('modal_nkwebdev');
+      content = content_nkwebdev();
+    }
+    if (link == 'modal_mitravel') {
+      var modal = document.getElementById('modal_mitravel');
+      content = content_mitravel();
+    }
+
+    modal.innerHTML = content;
   }
 
   function onModalClose() {
-    var extNode = document.getElementById('modal_cinders');
-    extNode.innerHTML = '';
+    var modal = document.getElementById('modal_cinders');
+    modal.innerHTML = '';
   }
 
   function loadScripts() {
