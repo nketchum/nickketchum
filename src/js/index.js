@@ -18,14 +18,14 @@ window.onload = function() {
     var content;
     var link = e.target.getAttribute('href').substring(1);
 
-    var content_cinders   = require('../ejs/modal_cinders.ejs');
-    var content_fpd       = require('../ejs/modal_fpd.ejs');
-    var content_coi       = require('../ejs/modal_coi.ejs');
-    var content_rogers    = require('../ejs/modal_rogers.ejs');
-    var content_colorvid  = require('../ejs/modal_colorvid.ejs');
-    var content_telemundo = require('../ejs/modal_telemundo.ejs');
-    var content_nkwebdev  = require('../ejs/modal_nkwebdev.ejs');
-    var content_mitravel  = require('../ejs/modal_mitravel.ejs');
+    var content_cinders   = require('../ejs/modals/modal_cinders.ejs');
+    var content_fpd       = require('../ejs/modals/modal_fpd.ejs');
+    var content_coi       = require('../ejs/modals/modal_coi.ejs');
+    var content_rogers    = require('../ejs/modals/modal_rogers.ejs');
+    var content_colorvid  = require('../ejs/modals/modal_colorvid.ejs');
+    var content_telemundo = require('../ejs/modals/modal_telemundo.ejs');
+    var content_nkwebdev  = require('../ejs/modals/modal_nkwebdev.ejs');
+    var content_mitravel  = require('../ejs/modals/modal_mitravel.ejs');
 
     if (link == 'modal_cinders') {
       var modal = document.getElementById('modal_cinders');
@@ -72,6 +72,7 @@ window.onload = function() {
     var sticky = new Sticky('nav');
     var lazy = new LazyLoad();
     var modal = new Modal.default({
+      clickOutside: false,
       onBeforeOpen: onModalOpen,
       onClose: onModalClose
     });
