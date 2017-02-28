@@ -4,13 +4,17 @@ window.onload = function() {
 
   function loadIndex() {
     const app = document.getElementById('app');
-    var clientele = require('../ejs/clientele.ejs');
-    var projects = require('../ejs/projects.ejs');
-    var personal = require('../ejs/personal.ejs');
-    var skills = require('../ejs/skills.ejs');
-    var modal = require('../ejs/modal.ejs');
-    var index = clientele() + projects() + personal() + skills() + modal();
-    app.innerHTML = index;
+
+    var ejs = {
+      clientele: require('../ejs/clientele.ejs'),
+      projects:  require('../ejs/projects.ejs'),
+      personal:  require('../ejs/personal.ejs'),
+      skills:    require('../ejs/skills.ejs'),
+      modal:     require('../ejs/modal.ejs')
+    }
+
+    var content = ejs.clientele() + ejs.projects() + ejs.personal() + ejs.skills() + ejs.modal();
+    app.innerHTML = content;
   }
 
   function onModalOpen(e) {
@@ -18,6 +22,7 @@ window.onload = function() {
     var content;
     var link_id = e.target.getAttribute('href').substring(1);
 
+    // Object key, ejs filename, and link id MUST be identical.
     var modals = {
       modal_cinders:    require('../ejs/modals/modal_cinders.ejs'),
       modal_fpd:        require('../ejs/modals/modal_fpd.ejs'),
