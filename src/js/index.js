@@ -16,50 +16,21 @@ window.onload = function() {
   function onModalOpen(e) {
     var modal;
     var content;
-    var link = e.target.getAttribute('href').substring(1);
+    var link_id = e.target.getAttribute('href').substring(1);
 
-    var content_cinders   = require('../ejs/modals/modal_cinders.ejs');
-    var content_fpd       = require('../ejs/modals/modal_fpd.ejs');
-    var content_coi       = require('../ejs/modals/modal_coi.ejs');
-    var content_rogers    = require('../ejs/modals/modal_rogers.ejs');
-    var content_colorvid  = require('../ejs/modals/modal_colorvid.ejs');
-    var content_telemundo = require('../ejs/modals/modal_telemundo.ejs');
-    var content_nkwebdev  = require('../ejs/modals/modal_nkwebdev.ejs');
-    var content_mitravel  = require('../ejs/modals/modal_mitravel.ejs');
+    var modals = {
+      modal_cinders:    require('../ejs/modals/modal_cinders.ejs'),
+      modal_fpd:        require('../ejs/modals/modal_fpd.ejs'),
+      modal_coi:        require('../ejs/modals/modal_coi.ejs'),
+      modal_rogers:     require('../ejs/modals/modal_rogers.ejs'),
+      modal_colorvid:   require('../ejs/modals/modal_colorvid.ejs'),
+      modal_telemundo:  require('../ejs/modals/modal_telemundo.ejs'),
+      modal_nkwebdev:   require('../ejs/modals/modal_nkwebdev.ejs'),
+      modal_mitravel:   require('../ejs/modals/modal_mitravel.ejs')
+    };
 
-    if (link == 'modal_cinders') {
-      var modal = document.getElementById('modal_cinders');
-      content = content_cinders();
-    }
-    if (link == 'modal_fpd') {
-      var modal = document.getElementById('modal_fpd');
-      content = content_fpd();
-    }
-    if (link == 'modal_coi') {
-      var modal = document.getElementById('modal_coi');
-      content = content_coi();
-    }
-    if (link == 'modal_rogers') {
-      var modal = document.getElementById('modal_rogers');
-      content = content_rogers();
-    }
-    if (link == 'modal_colorvid') {
-      var modal = document.getElementById('modal_colorvid');
-      content = content_colorvid();
-    }
-    if (link == 'modal_telemundo') {
-      var modal = document.getElementById('modal_telemundo');
-      content = content_telemundo();
-    }
-    if (link == 'modal_nkwebdev') {
-      var modal = document.getElementById('modal_nkwebdev');
-      content = content_nkwebdev();
-    }
-    if (link == 'modal_mitravel') {
-      var modal = document.getElementById('modal_mitravel');
-      content = content_mitravel();
-    }
-
+    var modal = document.getElementById(link_id);
+    content = modals[link_id]();
     modal.innerHTML = content;
   }
 
@@ -80,26 +51,5 @@ window.onload = function() {
 
   loadIndex();
   loadScripts();
-
-  // var xhr;
-  // function getData(method, url, next) {
-  //   xhr = new XMLHttpRequest();
-  //   if (!xhr) {
-  //     console.log('Error: Cannot create an XMLHttpRequest.');
-  //     return;
-  //   }
-  //   xhr.onreadystatechange = next;
-  //   xhr.open(method, url, true);
-  //   xhr.send();
-  // }
-  // var theData = getData('GET', 'http://cms.nickketchum.dev/get/media/logo', function() {
-  //   if (xhr.readyState === XMLHttpRequest.DONE) {
-  //     if (xhr.status === 200) {
-  //       console.log(xhr.responseText);
-  //     } else {
-  //       console.log('Error: Request was unsuccessful.');
-  //     }
-  //   }
-  // });
 
 };
